@@ -10,12 +10,12 @@ of the public key.
 
 Example Use:
 
-bash-3.2$ ./sprprog.exe ABCD
-badger collects dandelion.
-weasel.
-bash-3.2$ ./sprprog.exe 1234
-woman binds birchtree.
-cat.
-bash-3.2$
+    bash-3.2$ ./sprprog.exe ABCD
+    badger collects dandelion.
+    weasel.
+    bash-3.2$ ./sprprog.exe 1234
+    woman binds birchtree.
+    cat.
+    bash-3.2$
 
-(sprprog.exe is here the name if the HashPrinter executable)
+    (sprprog.exe is here the name if the HashPrinter executable)
