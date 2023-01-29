@@ -1,0 +1,39 @@
+//Aufruf-Syntax:sprprog.exe <DBDC-Datei> <Botschafts-NEGATIV-Liste.csv>
+
+int Main::main()
+{ 
+  
+  var CommandlineArgs cla;
+  var PrintfClass pfc;
+  var String_16 hashASCII;
+
+  cla.getArgument(1,hashASCII);
+
+  var *char hash[] = new char[hashASCII.length()/2];
+  var int octetPos = 0;
+  var int bitPos = 0;
+  var String_16 s;
+  for(var int i=0; i < hashASCII.length(); i++)
+  {
+    var char nibbleChar = hashASCII.getAt(i);
+    var int nibble;
+    if(s.hexToInt(nibbleChar,nibble)==0)
+    {
+      pfc.fstr("invalid character $").sa(nibbleChar).pr(); 
+      var SystemControl sc;
+      sc.exit();
+    }
+    var int old = cast(int,hash[octetPos]);
+    hash[octetPos] =  cast(char,(old ^ (nibble << bitPos)));
+    if(bitPos == 4)
+    { bitPos = 0; octetPos++;}
+    else {bitPos = 4; }
+  }
+
+  var HashPrinter hp;
+  hp.print(hash);
+
+
+   return 1;
+   
+}

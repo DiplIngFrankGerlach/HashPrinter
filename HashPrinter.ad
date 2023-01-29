@@ -1,0 +1,18 @@
+
+class HashPrinter
+{
+   *String_16 subjectList[];
+   *String_16 objectList[];
+   *String_16 verbList[];
+  
+   int octetPos;
+   int bitPos;
+   *char hash[];
+methods:
+   HashPrinter();
+
+   void print(*char hashI[]);
+
+   int getNibble(&int nibble);
+   
+};

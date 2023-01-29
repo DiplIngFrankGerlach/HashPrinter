@@ -1,0 +1,116 @@
+
+HashPrinter::HashPrinter()
+{
+   subjectList = new String_16[16];
+   subjectList[0].assign("man");
+   subjectList[1].assign("woman");
+   subjectList[2].assign("boy");
+   subjectList[3].assign("girl");
+   subjectList[4].assign("cat");
+   subjectList[5].assign("dog");
+   subjectList[6].assign("wolf");
+   subjectList[7].assign("leopard");
+   subjectList[8].assign("tiger");
+   subjectList[9].assign("squirrel");
+   subjectList[10].assign("badger");
+   subjectList[11].assign("wild boar");
+   subjectList[12].assign("roe deer");
+   subjectList[13].assign("weasel");
+   subjectList[14].assign("fox");
+   subjectList[15].assign("wildcat");
+   
+
+   objectList = new String_16[16];
+   objectList[0].assign("tree");
+   objectList[1].assign("oaktree");
+   objectList[2].assign("spruce");
+   objectList[3].assign("birchtree");
+   objectList[4].assign("nettle");
+   objectList[5].assign("sunflower");
+   objectList[6].assign("stone");
+   objectList[7].assign("wheat");
+   objectList[8].assign("raspberry");
+   objectList[9].assign("honey");
+   objectList[10].assign("grass");
+   objectList[11].assign("buttercup");
+   objectList[12].assign("dandelion");
+   objectList[13].assign("cornflower");
+   objectList[14].assign("red clover");
+   objectList[15].assign("crosswort");
+
+   verbList = new String_16[16];
+   verbList[0].assign("eat");
+   verbList[1].assign("pluck");
+   verbList[2].assign("bind");
+   verbList[3].assign("stuff");
+   verbList[4].assign("like");
+   verbList[5].assign("crush");
+   verbList[6].assign("reap");
+   verbList[7].assign("throw");
+   verbList[8].assign("dry");
+   verbList[9].assign("despise");
+   verbList[10].assign("harvest");
+   verbList[11].assign("collect");
+   verbList[12].assign("grind");
+   verbList[13].assign("smell");
+   verbList[14].assign("spit");
+   verbList[15].assign("suck");
+
+}
+
+
+int HashPrinter::getNibble(&int nibble)
+{
+   if( hash.sz > octetPos )
+   {
+       var int octet = cast(int,hash[octetPos]);
+       nibble = (octet >> bitPos) & 0xF; 
+       //var PrintfClass pfc;
+       //pfc.fstr(" $ ").sa(nibble).prNoLF();
+       if(bitPos == 4)
+       {
+         octetPos++;
+         bitPos = 0;
+       }
+       else { bitPos = 4; }
+       return 1;//continue
+   } 
+   return 0;//end
+}
+
+void HashPrinter::print(*char hashI[])
+{
+   hash = hashI;
+   octetPos = 0;
+   bitPos = 0;
+   
+   var PrintfClass pfc;
+   var int running = 1;
+   while(running)
+   {
+       running = 0;
+       //subject
+       var int sub;
+       if(this.getNibble(sub) )
+       {
+           pfc.fstr("$").sa(subjectList[sub]).prNoLF();
+           //verb 
+           var int ver;
+           if(this.getNibble(ver) )
+           {
+               pfc.fstr(" $s").sa(verbList[ver]).prNoLF();
+               var int obj;
+               if(this.getNibble(obj))
+               {
+                  pfc.fstr(" $").sa(objectList[obj]).prNoLF();
+                  running = 1;
+               }
+           }
+       }
+       pfc.fstr(".").pr();
+  
+   }
+
+
+}
+
