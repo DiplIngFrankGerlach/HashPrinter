@@ -18,4 +18,4 @@ Example Use:
     cat.
     bash-3.2$
 
-    (sprprog.exe is here the name if the HashPrinter executable)
+    (sprprog.exe is the name if the HashPrinter executable here)
