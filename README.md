@@ -10,6 +10,25 @@ of the public key.
 
 Example Use:
 
+bash-3.2$ shasum ~/.ssh/id_rsa.pub 
+b06dcc5549fdc1eab8ffff5780c0aca64589a472  /Users/frank/.ssh/id_rsa.pub
+bash-3.2$ ./sprprog.exe b06dcc5549fdc1eab8ffff5780c0aca64589a472
+wild boar eats stone.
+weasel grinds dandelion.
+dog crushs nettle.
+squirrel sucks cornflower.
+roe deer plucks red clover.
+badger collects raspberry.
+wildcat sucks crosswort.
+wildcat crushs wheat.
+tiger eats dandelion.
+man harvests dandelion.
+badger reaps nettle.
+dog drys honey.
+badger likes wheat.
+boy.
+
+
     bash-3.2$ ./sprprog.exe ABCD
     badger collects dandelion.
     weasel.
